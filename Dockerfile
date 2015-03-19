@@ -21,7 +21,7 @@ RUN \
 VOLUME ["/data/elasticsearch"]
 
 # Mount elasticsearch.yml config
-ADD files/elasticsearch.yml /config/elasticsearch.yml
+ADD files/elasticsearch.yaml /etc/elasticsearch/elasticsearch.yaml
 
 # Define working directory.
 WORKDIR /data/elasticsearch
@@ -32,5 +32,5 @@ WORKDIR /data/elasticsearch
 EXPOSE 9200 9300
 
 # Define default command.
-CMD ["/local/bin/elasticsearch"]
+CMD ["/local/bin/elasticsearch", "-Des.config=/data/elasticsearch.yml"]
 
