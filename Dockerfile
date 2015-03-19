@@ -32,5 +32,5 @@ WORKDIR /data/elasticsearch
 EXPOSE 9200 9300
 
 # Define default command.
-CMD ["/local/bin/elasticsearch", "-Des.config=/data/elasticsearch.yml"]
+CMD ["/local/bin/elasticsearch", "-Des.config=/etc/elasticsearch/elasticsearch.yaml"]
 
