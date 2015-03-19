@@ -18,13 +18,13 @@ RUN \
   rm -f $ES_PKG_NAME.tar.gz
 
 # Define mountable directories.
-VOLUME ["/data/elasticsearch"]
+VOLUME ["/data"]
 
 # Mount elasticsearch.yml config
 ADD files/elasticsearch.yaml /etc/elasticsearch/elasticsearch.yaml
 
 # Define working directory.
-WORKDIR /data/elasticsearch
+WORKDIR /data
 
 # Expose ports.
 #   - 9200: HTTP
