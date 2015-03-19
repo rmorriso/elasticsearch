@@ -14,23 +14,23 @@ RUN \
   cd / && \
   wget https://download.elasticsearch.org/elasticsearch/elasticsearch/$ES_PKG_NAME.tar.gz && \
   tar xvzf $ES_PKG_NAME.tar.gz && \
-  rm -f $ES_PKG_NAME.tar.gz && \
-  mv /$ES_PKG_NAME /elasticsearch
+  mv /$ES_PKG_NAME /local && \
+  rm -f $ES_PKG_NAME.tar.gz
 
 # Define mountable directories.
-VOLUME ["/data"]
+VOLUME ["/data/elasticsearch"]
 
 # Mount elasticsearch.yml config
-ADD config/elasticsearch.yml /elasticsearch/config/elasticsearch.yml
+ADD files/elasticsearch.yml /config/elasticsearch.yml
 
 # Define working directory.
-WORKDIR /data
-
-# Define default command.
-CMD ["/elasticsearch/bin/elasticsearch"]
+WORKDIR /data/elasticsearch
 
 # Expose ports.
 #   - 9200: HTTP
 #   - 9300: transport
-EXPOSE 9200
-EXPOSE 9300
+EXPOSE 9200 9300
+
+# Define default command.
+CMD ["/local/bin/elasticsearch"]
+
